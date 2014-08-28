@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="carApp">
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/angular-charts.js"></script>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+
+<body ng-controller="Controller" ng-init="init()">
+
+    <div class="container" ng-if="initialized">
+        <h1 class="page-header">Show me the MPG!</h1>
+
+        <div class="row">
+            <div class="col-xs-3">
+                <label>
+                    Year: {{ filters.modelYear.min }} - {{ filters.modelYear.max }}
+                    <input type="range" min="1900" max="2014" ng-model="filters.modelYear.min"/>
+                    <input type="range" min="1900" max="2014" ng-model="filters.modelYear.max"/>
+                </label>
+            </div>
+            <div class="col-xs-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="filters.removeLowMPG"/>
+                        Remove MPG < 1
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-danger" ng-click="reset()">
+                    <i class="fa fa-power-off"></i> Reset
+                </button>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row stats-row">
+            <div class="col-sm-12">
+                <div><i class="fa fa-car"></i> {{ MPG.count }} cars</div>
+            </div>
+            <div class="col-sm-2">
+                <i class="fa fa-dashboard"></i> MPG
+            </div>
+            <div class="col-sm-2">
+                <div>{{ MPG.min | number:2 }} min</div>
+            </div>
+            <div class="col-sm-2">
+                <div>{{ MPG.max | number:2 }} max</div>
+            </div>
+            <div class="col-sm-2">
+                <div>{{ MPG.mean | number:2 }} mean</div>
+            </div>
+            <div class="col-sm-2">
+                <div>{{ MPG.median | number:2 }} median</div>
+            </div>
+            <div class="col-sm-2">
+                <div>{{ MPG.std | number }} std</div>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="chart-container">
+            <div ac-chart="chart.type" ac-data="chart.dataSet" ac-config="chart.config" id="chart" class="chart"></div>
+        </div>
+        <hr/>
+        <select ng-model="chart.type">
+            <option value="bar">Bar Chart</option>
+            <option value="line">Line Chart</option>
+            <option value="area">Area Chart</option>
+        </select>
+        <br/>
+        <br/>
+        <label>
+            Resolution: {{ filters.resolution }}
+            <input type="range" min="3" max="50" ng-model="filters.resolution"/>
+        </label>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+/* Styles go here */
+#chart {
+    width: 100%;
+    height: 400px;
+}
+
+.stats-row {
+    color: #999;
+    font-weight: 100;
+    font-size: 21px;
+}
