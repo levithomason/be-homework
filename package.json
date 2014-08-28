@@ -1,0 +1,30 @@
+{
+  "name": "be-homework",
+  "version": "0.0.0",
+  "description": "Within this plunkr, you'll find your building data ready to be used in data.js, set to the global `global_data`. Each object of `global_data` contains the  following: `cost`, `model_yeal`, and `MPG`.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/levithomason/be-homework"
+  },
+  "keywords": [
+    "car",
+    "statistics",
+    "angular",
+    "angular-charts",
+    "chart"
+  ],
+  "author": "Levi Thomason",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/levithomason/be-homework/issues"
+  },
+  "homepage": "https://github.com/levithomason/be-homework",
+  "dependencies": {
+    "express": "~4.8.6",
+    "logfmt": "~1.1.2"
+  }
+}
